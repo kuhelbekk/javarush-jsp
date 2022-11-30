@@ -18,7 +18,7 @@ import java.io.IOException;
 
 @WebServlet(name = "ActionServlet", value = "/action")
 public class ActionServlet extends HttpServlet {
-    private static final Logger LOGGER = LogManager.getLogger(StartServlet.class);
+    private static final Logger LOGGER = LogManager.getLogger(LoginServlet.class);
     Quest quest;
     Users users;
 
@@ -46,11 +46,20 @@ public class ActionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+
         String clickId = request.getParameter("clickId");
         boolean isNumeric = clickId.chars().allMatch(Character::isDigit);
         int index = isNumeric ? Integer.parseInt(clickId) : 0;
         User user = (User) request.getSession().getAttribute("userData");
+        int  oldIndex =   user.getCurrentQuest();
+        if (!quest.isTransit(oldIndex,index) || oldIndex==index ){
+            throw new RuntimeException("You broke this site! Why? Who will fix it now?");
+        }
         user.setCurrentQuest(index);
+        if (quest.getQuestion(index).getType().equals("win")) user.incWinGameCount();
+        if (quest.getQuestion(index).getType().equals("loss")) user.incLostGameCount();
+
         request.getSession().setAttribute("question", quest.getQuestion(index));
         getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request,response);
     }

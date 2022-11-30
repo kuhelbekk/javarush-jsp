@@ -9,7 +9,7 @@
     <script src="<c:url value="/static/jquery-3.6.0.min.js"/>"></script>
     <link href="${pageContext.request.contextPath}/static/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/main.css">
 
 </head>
@@ -23,7 +23,7 @@
             <div class="col-12">
                 <div class="text-center">
                     <h1>Quest JavaRush</h1>
-                    <form action="/restart">
+                    <form action="/login">
                         <img class="rounded mx-auto d-block"
                              src="${pageContext.request.contextPath}/static/start_img.jpg"><br>
                         <label for="fname">Здравствуй, как тебя зовут? </label><br>
@@ -38,6 +38,9 @@
 </c:if>
 
 <c:if test="${userData  != null}">
+
+    <jsp:include page="parts/headerUserInfo.jsp" />
+
     <section class="container">
         <div class = "row">
             <div class="col-12" >
@@ -50,11 +53,10 @@
             </div>
         </div>
 
-
         <c:if test="${question.getImg() != null}">
-            <div class = "row">
-                <div class="col-12">
-                    <img src="${pageContext.request.contextPath}/static/${question.getImg()}" class="rounded mx-auto d-block">
+            <div class = "row justify-content-md-center">
+                <div class="col-6 ">
+                    <img class="rounded mb-2 mx-auto  img-fluid" src="${pageContext.request.contextPath}/static/${question.getImg()}" >
                 </div>
             </div>
         </c:if>
@@ -70,9 +72,7 @@
         </c:forEach>
 
     </section>
-    <hr>
-    <br>
-    <button class="button" onclick="restart()">Restart quest</button>
+
 </c:if>
 
 <script src="${pageContext.request.contextPath}/static/js/bootstrap.bundle.min.js"

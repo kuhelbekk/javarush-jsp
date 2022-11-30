@@ -14,9 +14,9 @@ import com.javarush.user.Users;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@WebServlet(name = "RestartServlet", value = "/restart")
-public class StartServlet extends HttpServlet {
-    private static final Logger LOGGER = LogManager.getLogger(StartServlet.class);
+@WebServlet(name = "LoginServlet", value = "/login")
+public class LoginServlet extends HttpServlet {
+    private static final Logger LOGGER = LogManager.getLogger(LoginServlet.class);
 
     Quest quest;
     Users users;
@@ -32,10 +32,23 @@ public class StartServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LOGGER.debug("RestartServlet GET");
+        LOGGER.debug("login GET");
         String userName = request.getParameter("fname");
-        User userData  = users.getOrCreateUser(userName);
+        User userData;
+        if (userName==null){
+            userData = (User) request.getSession().getAttribute("userData");
+            if (userData==null)  {
+                getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request,response);
+            }
+        }else{
+            if (userName.isEmpty() || userName.isBlank()){
+                getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request,response);
+            }
+            userData  = users.getOrCreateUser(userName);
+        }
         HttpSession currentSession = request.getSession(true);
+        userData.incGameCount();
+        userData.setCurrentQuest(0);
         currentSession.setAttribute("userData", userData);
         currentSession.setAttribute("question", quest.getQuestion(userData.getCurrentQuest()));
         getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request,response);
