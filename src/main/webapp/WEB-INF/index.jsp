@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <title align="center">Quest JavaRush</title>
@@ -11,7 +11,6 @@
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/main.css">
-
 </head>
 
 <body>
@@ -23,7 +22,7 @@
             <div class="col-12">
                 <div class="text-center">
                     <h1>Quest JavaRush</h1>
-                    <form action="/login">
+                    <form action="${pageContext.request.contextPath}/login">
                         <img class="rounded mx-auto d-block"
                              src="${pageContext.request.contextPath}/static/start_img.jpg"><br>
                         <label for="fname">Здравствуй, как тебя зовут? </label><br>
@@ -38,7 +37,6 @@
 </c:if>
 
 <c:if test="${userData  != null}">
-
     <jsp:include page="parts/headerUserInfo.jsp" />
 
     <section class="container">

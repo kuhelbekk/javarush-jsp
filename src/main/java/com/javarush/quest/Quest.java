@@ -14,7 +14,11 @@ public class Quest {
     private List<Question> questions;
 
     public Quest(String QuestfileName) {
-        LOGGER.debug( "load Quest from" );
+        LOGGER.debug( "####################################" );
+        for (int i = 0; i < 10; i++) {
+            LOGGER.fatal( "!!!!!!!!!!!!!!!!!!load Quest from" );
+        }
+        LOGGER.debug( "####################################" );
         questions = QuestionLoader.getQuestions(QuestfileName);
     }
 
