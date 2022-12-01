@@ -1,8 +1,6 @@
 package com.javarush.quest;
 
-import com.javarush.servlets.AppContextListener;
-import lombok.Getter;
-import lombok.Setter;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,14 +9,9 @@ import java.util.List;
 public class Quest {
 
     private static final Logger LOGGER = LogManager.getLogger(Quest.class);
-    private List<Question> questions;
-
+    private final List<Question> questions;
     public Quest(String QuestfileName) {
-        LOGGER.debug( "####################################" );
-        for (int i = 0; i < 10; i++) {
-            LOGGER.fatal( "!!!!!!!!!!!!!!!!!!load Quest from" );
-        }
-        LOGGER.debug( "####################################" );
+        LOGGER.info( "Load Quest from" +QuestfileName );
         questions = QuestionLoader.getQuestions(QuestfileName);
     }
 
@@ -31,7 +24,7 @@ public class Quest {
     }
 
     public boolean isTransit(int oldIndex, int index) {
-        for (Answer answer : getQuestion(oldIndex).answers) {
+        for (Answer answer : getQuestion(oldIndex).getAnswers()) {
             if (answer.getId()==index) return true;
         }
         return false;

@@ -3,6 +3,7 @@ package com.javarush.quest;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 public class Question{
@@ -11,13 +12,11 @@ public class Question{
     private String text;
     private String type;
     private String img;
-    public ArrayList<Answer> answers;
 
-    public String getAnswerText(int indexAnswer){
-        if (answers.get(indexAnswer)!=null) {
-            return answers.get(indexAnswer).getTitle();
-        }
-        return "";
+    private List<Answer> answers;
+    public List<Answer> getAnswers(){
+        return answers;
     };
+
 }
 
