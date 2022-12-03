@@ -10,11 +10,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header>
     <div class="d-flex flex-column">
-        <div class="p-2 mb-0 text-white">
-            <c:out value="${userData.getName()}"/><br>
-            Games count: <c:out value="${userData.getGameCount()}"/><br>
-            Games WIN: <c:out value="${userData.getWinGameCount()}"/><br>
-            Games LOSE: <c:out value="${userData.getLostGameCount()}"/>
+        <div class="p-2 mb-0" >
+            <p class="text-light" >
+                <c:out value="${userData.getName()}"/><br>
+                Games count: <c:out value="${userData.getGameCount()}"/><br>
+                Games WIN: <c:out value="${userData.getWinGameCount()}"/><br>
+                Games LOSE: <c:out value="${userData.getLostGameCount()}"/>
+            </p>
         </div>
     </div>
 
