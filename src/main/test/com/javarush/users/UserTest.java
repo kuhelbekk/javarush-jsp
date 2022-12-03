@@ -1,4 +1,4 @@
-package com.javarush.user;
+package com.javarush.users;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

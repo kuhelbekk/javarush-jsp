@@ -1,4 +1,4 @@
-package com.javarush.user;
+package com.javarush.users;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,13 +19,12 @@ public class User {
     private int currentQuest = 0;
 
 
-
     public User(String name) {
-        if (name == null){
-            throw  new IllegalArgumentException("User name is null");
+        if (name == null) {
+            throw new IllegalArgumentException("User name is null");
         }
-        if (name.isEmpty() || name.isBlank()){
-            throw  new IllegalArgumentException("User name is empty");
+        if (name.isEmpty() || name.isBlank()) {
+            throw new IllegalArgumentException("User name is empty");
         }
         this.name = name;
     }
@@ -37,6 +36,7 @@ public class User {
     public void incWinGameCount() {
         winGameCount++;
     }
+
     public void incLostGameCount() {
         lostGameCount++;
     }

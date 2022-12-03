@@ -1,3 +1,4 @@
+
 th {
     font-weight: bold;
     padding: 5px;
@@ -36,4 +37,10 @@ td{
 .button:hover {
     background-color: #63b966;
     color: white;
+}
+header{
+
+    background: -webkit-linear-gradient(270deg, rgb(0, 119, 197) 4%, rgb(0, 0, 0) 91%);
+    background: -moz-linear-gradient(270deg, rgb(0, 119, 197) 4%, rgb(0, 0, 0) 91%);
+    background: linear-gradient(270deg, rgb(0, 119, 197) 4%, rgb(0, 0, 0) 91%);
 }

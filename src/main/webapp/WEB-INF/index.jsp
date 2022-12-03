@@ -18,8 +18,8 @@
 
 <c:if test="${userData  == null}">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
+        <div class="row justify-content-md-center">
+            <div class=" col-6 col-sm-12">
                 <div class="text-center">
                     <h1>Quest JavaRush</h1>
                     <form action="${pageContext.request.contextPath}/login">
@@ -38,32 +38,32 @@
 
 <c:if test="${userData  != null}">
     <jsp:include page="parts/headerUserInfo.jsp" />
-
+    <br>
     <section class="container">
-        <div class = "row">
-            <div class="col-12" >
+        <div class = "row justify-content-md-center">
+            <div class="col-12   col-lg-8" >
                 <h2 class="text-center mb-5">${question.getTitle()}</h2>
             </div>
         </div>
-        <div class = "row">
-            <div class="col-12">
+        <div class = "row justify-content-md-center">
+            <div class="col-12  col-lg-8" >
                 <h3 class="text-center">${question.getText()}</h3>
             </div>
         </div>
 
         <c:if test="${question.getImg() != null}">
             <div class = "row justify-content-md-center">
-                <div class="col-6 ">
-                    <img class="rounded mb-2 mx-auto  img-fluid" src="${pageContext.request.contextPath}/static/${question.getImg()}" >
+                <div class="col-12  col-lg-8">
+                    <img class="rounded d-block mb-2 mx-auto " src="${pageContext.request.contextPath}/static/${question.getImg()}" >
                 </div>
             </div>
         </c:if>
         <c:forEach items="${question.answers}" var="item">
-            <div class="row mb-2" >
-                <div class="col-12" >
+            <div class="row mb-2 justify-content-md-center" >
+                <div class="col-12 col-lg-8" >
                     <form action="${pageContext.request.contextPath}/action" method="post">
                         <input type="hidden" name="clickId" value="${item.getId()}">
-                        <button  class="w-100 btn btn-primary btn-lg" type="submit">${item.getTitle()}</button>
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">${item.getTitle()}</button>
                     </form>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-package com.javarush.user;
+package com.javarush.users;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Field;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 
 class UsersTest {
     Users users;
@@ -30,6 +29,11 @@ class UsersTest {
             throw new RuntimeException(e);
         }
         assertSame(user1, user2);
+
+    }
+    @Test
+    void getOrCreateUserNameNull() {
+        assertThrows(NullPointerException.class, ()->users.getOrCreateUser(null));
 
     }
 }

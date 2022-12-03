@@ -3,6 +3,7 @@ package com.javarush.servlets;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +17,7 @@ public class IndexServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(IndexServlet.class);
 
     @Override
-    public void init(ServletConfig config ) throws ServletException {
+    public void init(ServletConfig config) throws ServletException {
         super.init(config);
         LOGGER.debug("init IndexServlet");
     }
@@ -24,7 +25,7 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOGGER.debug("doGet IndexServlet");
-        getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 
 

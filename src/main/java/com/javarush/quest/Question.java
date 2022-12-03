@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class Question{
+public class Question {
     private int id;
     private String title;
     private String text;
@@ -14,9 +14,12 @@ public class Question{
     private String img;
 
     private List<Answer> answers;
-    public List<Answer> getAnswers(){
+
+    public List<Answer> getAnswers() {
         return answers;
-    };
+    }
+
+    ;
 
 }
 

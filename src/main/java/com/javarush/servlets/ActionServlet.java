@@ -1,8 +1,8 @@
 package com.javarush.servlets;
 
 import com.javarush.quest.Quest;
-import com.javarush.user.User;
-import com.javarush.user.Users;
+import com.javarush.users.User;
+import com.javarush.users.Users;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,39 +21,23 @@ public class ActionServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(LoginServlet.class);
     Quest quest;
     Users users;
-
     @Override
-    public void init(ServletConfig config ) throws ServletException {
+    public void init(ServletConfig config) throws ServletException {
         super.init(config);
         LOGGER.debug("init ActionServlet");
-        var serverletContext =  config.getServletContext();
-        users  = (Users) serverletContext.getAttribute("users");
-        quest  = (Quest) serverletContext.getAttribute("quest");
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession currentSession = request.getSession();
-        String answerId = request.getParameter("clickId");
-        boolean isNumeric = answerId.chars().allMatch(Character::isDigit);
-        int index = isNumeric ? Integer.parseInt(answerId) : 0;
-        User user = (User) currentSession.getAttribute("userData");
-        user.setCurrentQuest(index);
-        currentSession.setAttribute("question", quest.getQuestion(index));
-        getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request,response);
+        var serverletContext = config.getServletContext();
+        users = (Users) serverletContext.getAttribute("users");
+        quest = (Quest) serverletContext.getAttribute("quest");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-
         String clickId = request.getParameter("clickId");
         boolean isNumeric = clickId.chars().allMatch(Character::isDigit);
         int index = isNumeric ? Integer.parseInt(clickId) : 0;
         User user = (User) request.getSession().getAttribute("userData");
-        int  oldIndex =   user.getCurrentQuest();
-        if (!quest.isTransit(oldIndex,index) || oldIndex==index ){
+        int oldIndex = user.getCurrentQuest();
+        if (!quest.isTransit(oldIndex, index) || oldIndex == index) {
             throw new RuntimeException("You broke this site! Why? Who will fix it now?");
         }
         user.setCurrentQuest(index);
@@ -61,7 +45,7 @@ public class ActionServlet extends HttpServlet {
         if (quest.getQuestion(index).getType().equals("loss")) user.incLostGameCount();
 
         request.getSession().setAttribute("question", quest.getQuestion(index));
-        getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request,response);
+        getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 
 
