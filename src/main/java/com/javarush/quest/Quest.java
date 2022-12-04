@@ -1,17 +1,12 @@
 package com.javarush.quest;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.util.List;
 
 public class Quest {
-    private static final Logger LOGGER = LogManager.getLogger(Quest.class);
     private final List<Question> questions;
 
-    public Quest(String QuestfileName) {
-        LOGGER.info("Load Quest from" + QuestfileName);
-        questions = QuestionLoader.getQuestions(QuestfileName);
+    public Quest(List<Question> questions) {
+        this.questions = questions;
     }
 
     public Question getQuestion(int index) {

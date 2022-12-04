@@ -12,14 +12,7 @@ public class Question {
     private String text;
     private String type;
     private String img;
-
     private List<Answer> answers;
-
-    public List<Answer> getAnswers() {
-        return answers;
-    }
-
-    ;
 
 }
 

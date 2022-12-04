@@ -1,6 +1,7 @@
 package com.javarush.servlets;
 
 import com.javarush.quest.Quest;
+import com.javarush.quest.QuestionLoader;
 import com.javarush.users.Users;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,7 +24,8 @@ public class AppContextListener implements ServletContextListener {
         Users users = new Users();
         servletContext.setAttribute("users", users);
         LOGGER.debug("users repository created");
-        Quest quest = new Quest("/question.json"); //  убрать в контекст
+        var question = QuestionLoader.getQuestions("/question.json");
+        Quest quest = new Quest(question); //  убрать в контекст
         servletContext.setAttribute("quest", quest);
         LOGGER.debug("quest  loaded");
     }

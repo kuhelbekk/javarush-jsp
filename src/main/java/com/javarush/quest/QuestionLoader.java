@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class QuestionLoader {
     private static final Logger LOGGER = LogManager.getLogger(LoginServlet.class);
 
-    static List<Question> getQuestions(String filenName) {
+    public static List<Question> getQuestions(String filenName) {
         try {
             ObjectMapper om = new ObjectMapper();
             URL resource = QuestionLoader.class.getClassLoader().getResource(filenName);
