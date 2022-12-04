@@ -53,6 +53,4 @@ public class LoginServlet extends HttpServlet {
         currentSession.setAttribute("question", quest.getQuestion(userData.getCurrentQuest()));
         getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
-
-
 }
