@@ -1,0 +1,12 @@
+<web-app>
+    <display-name>ServletExceptionHandling</display-name>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/AppExceptionHandler</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/error.html</location>
+        <location>/AppExceptionHandler</location>
+    </error-page>
+</web-app>
