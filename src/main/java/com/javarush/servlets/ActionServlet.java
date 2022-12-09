@@ -19,8 +19,8 @@ import java.io.IOException;
 @WebServlet(name = "ActionServlet", value = "/action")
 public class ActionServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(LoginServlet.class);
-    Quest quest;
-    Users users;
+    private Quest quest;
+    private Users users;
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
@@ -44,6 +44,7 @@ public class ActionServlet extends HttpServlet {
         if (quest.getQuestion(index).getType().equals("win")) user.incWinGameCount();
         if (quest.getQuestion(index).getType().equals("loss")) user.incLostGameCount();
 
+        request.getSession().setAttribute("usersCount", users.getUserCount());
         request.getSession().setAttribute("question", quest.getQuestion(index));
         getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }

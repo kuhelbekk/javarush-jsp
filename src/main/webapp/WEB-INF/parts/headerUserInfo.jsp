@@ -15,11 +15,11 @@
                 <c:out value="${userData.getName()}"/><br>
                 Games count: <c:out value="${userData.getGameCount()}"/><br>
                 Games WIN: <c:out value="${userData.getWinGameCount()}"/><br>
-                Games LOSE: <c:out value="${userData.getLostGameCount()}"/>
+                Games LOSE: <c:out value="${userData.getLostGameCount()}"/><br>
+                Users count: <c:out value="${usersCount}"/>
             </p>
         </div>
     </div>
-
 
     <div class="d-flex flex-nowrap">
         <div class="order-1 p-2">

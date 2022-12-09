@@ -13,7 +13,6 @@ public class User {
     private int winGameCount = 0;
     @Getter
     private int lostGameCount = 0;
-
     @Getter
     @Setter
     private int currentQuest = 0;
